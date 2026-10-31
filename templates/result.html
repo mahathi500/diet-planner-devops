@@ -1,0 +1,11 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Your Plan | NutriPlan</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body><header><a class="brand" href="/">NutriPlan<span>.</span></a><a href="/">← Create another plan</a></header>
+<main class="results"><p class="eyebrow">YOUR STARTING POINT</p><h1>Your wellness snapshot</h1>
+<div class="stats"><article><span>Estimated BMI</span><strong>{{ result.bmi }}</strong><small>{{ result.bmi_category }}</small></article>
+<article><span>Estimated maintenance</span><strong>{{ result.maintenance_calories }}</strong><small>kcal per day</small></article>
+<article class="featured"><span>Illustrative daily target</span><strong>{{ result.target_calories }}</strong><small>kcal per day</small></article></div>
+<h2>A simple sample meal plan</h2><div class="meal-grid">{% for name, idea in result.meals %}
+<article class="meal"><i></i><h3>{{ name }}</h3><p>{{ idea }}</p></article>{% endfor %}</div>
+<p class="disclaimer">These calculations are rough educational estimates, not a prescription. BMI is a limited screening measure. Calorie needs vary with health and other factors. Consult a registered dietitian or healthcare professional before making significant dietary changes. This demo does not store submitted details.</p>
+<a class="button-link" href="/">← Back to planner</a></main><footer>NutriPlan · A student case-study application</footer></body></html>

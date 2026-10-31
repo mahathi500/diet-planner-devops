@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: diet-planner
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: diet-planner
+  template:
+    metadata:
+      labels:
+        app: diet-planner
+    spec:
+      containers:
+        - name: diet-planner
+          image: mahathinalagandla/diet-planner:latest
+          ports:
+            - containerPort: 5000
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 5000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 5000
+            initialDelaySeconds: 15
+            periodSeconds: 20

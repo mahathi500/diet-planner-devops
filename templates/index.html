@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NutriPlan | Diet Planner</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body><header><a class="brand" href="/">NutriPlan<span>.</span></a><small>YOUR DAILY WELLNESS COMPANION</small></header>
+<main class="hero"><section><p class="eyebrow">EAT WELL. FEEL GOOD.</p><h1>A healthier routine starts with a <em>simple plan.</em></h1>
+<p class="sub">Enter a few details to see an estimated calorie target and a sample balanced meal plan.</p>
+<div class="note"><b>Small steps matter.</b><br>Build consistent habits with practical, familiar meals.</div></section>
+<section class="panel"><h2>Create your plan</h2><p class="muted">All fields are required.</p>
+{% if error %}<p class="error">{{ error }}</p>{% endif %}
+<form action="/plan" method="POST"><div class="grid">
+<label>Age<input name="age" type="number" min="15" max="100" required placeholder="e.g. 22"></label>
+<label>Height (cm)<input name="height" type="number" min="100" max="230" step=".1" required placeholder="e.g. 165"></label>
+<label>Weight (kg)<input name="weight" type="number" min="25" max="300" step=".1" required placeholder="e.g. 60"></label>
+<label>Gender for formula<select name="gender"><option value="female">Female</option><option value="male">Male</option></select></label>
+<label>Activity level<select name="activity"><option value="sedentary">Mostly sitting</option><option value="light">Light activity</option><option value="moderate" selected>Moderately active</option><option value="active">Very active</option></select></label>
+<label>Your goal<select name="goal"><option value="maintain">Maintain</option><option value="lose">Weight loss</option><option value="gain">Weight gain</option></select></label>
+</div><button type="submit">Generate my plan <span>→</span></button></form>
+<p class="fineprint">Educational estimate only. Not medical or nutritional advice.</p></section></main>
+<footer>NutriPlan · A student case-study application</footer></body></html>
